@@ -17,3 +17,9 @@ Si usas Node, deberás configurar TypeScript, por lo que te recomiendo Deno o Bu
     # Ejecución con seguimiento (hot reload)
     deno --watch name-file-ts
 ```
+
+## Comandos para instalar librerías externas
+
+```bash
+    deno run https://deno.land/x/logger/mod.ts
+```
