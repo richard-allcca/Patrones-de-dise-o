@@ -12,6 +12,13 @@
 
 import { COLORS } from '../helpers/colors.ts';
 
+/**
+ * En este ejemplo, tenemos un sistema de notificaciones que puede enviar
+ * notificaciones a través de diferentes canales (correo electrónico, SMS,
+ * notificaciones push). El patrón Bridge se utiliza para separar la lógica
+ * de la notificación de los canales de comunicación.
+ */
+
 interface Ability {
   use(): void;
 }

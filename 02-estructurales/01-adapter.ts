@@ -11,6 +11,12 @@
  * https://refactoring.guru/es/design-patterns/adapter
  */
 
+/**
+ * En este ejemplo, tenemos un sistema de procesamiento de pagos que utiliza
+ * diferentes servicios de pago (PayPal, Stripe y MercadoPago). El patrón Adapter
+ * se utiliza para adaptar estos servicios a una interfaz común (`PaymentProcessor`)
+ */
+
 // * Sin adaptador
 
 // import { LocalLogger } from './adapter-files/local-logger.ts';

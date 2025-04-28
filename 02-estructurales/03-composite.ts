@@ -14,10 +14,18 @@
  *
  */
 
+/**
+ * En este ejemplo, tenemos un sistema de archivos que consiste en archivos y carpetas.
+ * El patrón Composite se utiliza para representar la jerarquía del sistema de archivos
+ */
+
 interface FileSystemComponent {
   showDetails(indent?: string): void;
 }
 
+
+// ====================================================
+// Definimos las clases para los archivos y carpetas
 class File implements FileSystemComponent {
   private name: string;
 

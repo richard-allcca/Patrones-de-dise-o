@@ -11,12 +11,20 @@
 
 import { COLORS } from '../helpers/colors.ts';
 
+/**
+ * En este ejemplo, tenemos un sistema de notificaciones que puede enviar
+ * notificaciones a través de diferentes canales (correo electrónico, SMS,
+ * notificaciones push). El patrón Bridge se utiliza para separar la lógica
+ * de la notificación de los canales de comunicación.
+ */
+
 // 1. Interfaz NotificationChannel
 // Define el método `send`, que cada canal de comunicación implementará.
 interface NotificationChannel {
   send(message: string): void;
 }
 
+// ===========================================================
 // 2. SECTION - Implementaciones de Canales de Comunicación
 
 class EmailChannel implements NotificationChannel {
@@ -37,6 +45,7 @@ class PushNotificationChannel implements NotificationChannel {
   }
 }
 
+// ===========================================================
 // 3. SECTION - Clase Abstracta Notification
 // Define la propiedad `channel` y el método `notify`
 
@@ -52,7 +61,8 @@ abstract class Notification {
   abstract notify(message: string): void;
 }
 
-// 4. Clases Concretas de Notificaciones
+// ===========================================================
+// 4. SECTION - Clases Concretas de Notificaciones
 
 class AlertNotification extends Notification {
   notify(message: string): void {
@@ -87,6 +97,7 @@ class PushNotification extends Notification {
   }
 }
 
+// ============================================================
 // Aquí se crean instancias de las notificaciones y se envían mensajes a través de diferentes canales.
 function main() {
 

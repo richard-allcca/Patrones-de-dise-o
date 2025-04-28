@@ -13,11 +13,21 @@
 
 import { COLORS } from '../helpers/colors.ts';
 
+/**
+ * En este ejemplo, tenemos un sistema de procesamiento de pagos que utiliza
+ * diferentes servicios de pago (PayPal, Stripe y MercadoPago). El patrón Adapter
+ * se utiliza para adaptar estos servicios a una interfaz común (`PaymentProcessor`)
+ * para que puedan ser utilizados de manera intercambiable.
+ */
+
+// ===================================================
 // 1. Interfaz PaymentProcessor
 interface PaymentProcessor {
   processPayment(amount: number): void;
 }
 
+
+// ====================================================
 // 2. Clases de Servicios de Pago Externos
 // Estas clases simulan los servicios externos de PayPal, Stripe y MercadoPago
 
@@ -42,6 +52,7 @@ class MercadoPagoService {
   }
 }
 
+// ====================================================
 // 3. Clases Adaptadoras
 
 // Adaptador para PayPal
@@ -83,6 +94,7 @@ class MercadoPagoAdapter implements PaymentProcessor {
   }
 }
 
+// ====================================================
 // 4. Código Cliente para probar el Adapter
 
 function main() {

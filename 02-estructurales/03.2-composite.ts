@@ -16,13 +16,21 @@
 
 import { COLORS } from '../helpers/colors.ts';
 
+/**
+ * En este ejemplo, tenemos un menú de restaurante que consiste en ítems individuales
+ * (como ensaladas, sopas, etc.) y categorías de menú (como entradas, platos principales,
+ * bebidas y postres). El patrón Composite se utiliza para representar la jerarquía
+ * del menú y permitir que los ítems y categorías se traten de manera uniforme.
+ */
+
 // 1. Interfaz MenuComponent
 // Define el método `showDetails`, que implementarán los ítems y categorías de menú.
 interface MenuComponent {
   showDetails(indent?: string): void;
 }
 
-// 2. Clase MenuItem
+// ==================================================
+// Definimos las clases para los ítems individuales y las categorías de menú
 // Representa un ítem individual del menú, como un platillo o una bebida.
 class MenuItem implements MenuComponent {
   private name: string;
@@ -41,6 +49,7 @@ class MenuItem implements MenuComponent {
   }
 }
 
+// ==================================================
 // 3. Clase MenuCategory
 // Representa una categoría de menú que puede contener otros ítems o subcategorías.
 class MenuCategory implements MenuComponent {
@@ -65,9 +74,8 @@ class MenuCategory implements MenuComponent {
   }
 }
 
+// ==================================================
 // 4. Código Cliente para Probar el Composite
-// TODO: en esta función main, no deben de hacer nada, al ejecutarla,
-// Deben de ver la gráfica correcta del menú
 function main() {
   // Crear ítems individuales
   const salad = new MenuItem('Ensalada', 5.99);

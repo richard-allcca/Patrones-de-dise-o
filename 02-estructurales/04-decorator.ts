@@ -14,11 +14,19 @@
 
 import { COLORS } from '../helpers/colors.ts';
 
+/**
+ * En este ejemplo, tenemos un sistema de notificaciones que puede enviar
+ * notificaciones básicas, así como notificaciones por correo electrónico y SMS.
+ * El patrón Decorator se utiliza para añadir funcionalidad a las notificaciones
+ * sin modificar la clase base.
+ */
+
 // 1. Interfaz base que define el contrato para las notificaciones
 interface Notification {
   send(message: string): void;
 }
 
+// ===================================================
 // 2. Clase concreta que implementa la interfaz base
 // Esta es la funcionalidad básica de enviar una notificación.
 class BasicNotification implements Notification {
@@ -31,6 +39,7 @@ class BasicNotification implements Notification {
   }
 }
 
+// ==================================================
 // 3. Clase abstracta decoradora
 // Sirve como base para los decoradores concretos y delega la funcionalidad
 // a la notificación que envuelve.
@@ -45,6 +54,11 @@ abstract class NotificationDecorator implements Notification {
     this.notification.send(message); // Llama al método de la notificación envuelta
   }
 }
+
+// ==================================================
+// Decoradores concretos que añaden funcionalidad a la notificación
+// Decoradores que extienden la funcionalidad de la notificación base
+
 
 // 4. Decorador concreto: añade funcionalidad para enviar notificaciones por correo
 class EmailDecorator extends NotificationDecorator {
@@ -61,7 +75,6 @@ class EmailDecorator extends NotificationDecorator {
     this.sendEmail(message); // Añade la funcionalidad específica del correo
   }
 }
-
 // 5. Decorador concreto: añade funcionalidad para enviar notificaciones por SMS
 class SMSDecorator extends NotificationDecorator {
   private sendSMS(message: string) {
@@ -78,6 +91,7 @@ class SMSDecorator extends NotificationDecorator {
   }
 }
 
+// ==================================================
 // 6. Código cliente
 function main() {
   // Crear una notificación básica
