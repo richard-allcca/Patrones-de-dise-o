@@ -84,6 +84,7 @@ class PasteCommand implements Command {
   constructor(editor: TextEditor) {
     this.editor = editor;
   }
+
   execute(): void {
     this.editor.paste();
   }

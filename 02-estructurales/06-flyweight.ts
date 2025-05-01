@@ -34,7 +34,7 @@ class LocationIcon {
     this.iconImage = iconImage;
   }
 
-  display(coordinates: { x: number; y: number }): void {
+  displayCoordinatesWithIcon(coordinates: { x: number; y: number }): void {
     console.log(
       `Coords: ${this.type} en ${coordinates.x}, ${coordinates.y} con ícono %c[${this.iconImage}]`,
       COLORS.green
@@ -70,7 +70,7 @@ class MapLocation {
   }
 
   display() {
-    this.icon.display(this.coordinates);
+    this.icon.displayCoordinatesWithIcon(this.coordinates);
   }
 }
 
@@ -78,7 +78,8 @@ class MapLocation {
 function main() {
   const factory = new LocationFactory();
 
-  // Crear varias ubicaciones en el mapa
+  // Crear varias ubicaciones en el mapa reutilizando los íconos compartidos
+  // en lugar de crear nuevas instancias para cada ubicación.
   const locations = [
     new MapLocation(10, 20, factory.getLocationIcon('hospital')),
     new MapLocation(20, 40, factory.getLocationIcon('hospital')),
@@ -93,3 +94,13 @@ function main() {
 }
 
 main();
+
+// Logs:
+// Creando una instancia del ícono de hospital
+// Creando una instancia del ícono de parque
+// Creando una instancia del ícono de Escuela
+// Coords: hospital en 10, 20 con ícono [imagen_de_hospital.png]
+// Coords: hospital en 20, 40 con ícono [imagen_de_hospital.png]
+// Coords: hospital en 30, 60 con ícono [imagen_de_hospital.png]
+// Coords: parque en 35, 65 con ícono [imagen_de_parque.png]
+// Coords: Escuela en 30, 60 con ícono [imagen_de_escuela.png]
